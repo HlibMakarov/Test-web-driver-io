@@ -26,13 +26,13 @@ it('should demonstrate  setValue command', function () { 
      elem.setValue('test123');       
       browser.pause(2000);    })
 
-      
+
     it('should demonstrate the click command', () => {    
         browser.url('https://webdriver.io');    
         const blogButton = $('[href="/blog/"]')   
          browser.pause(2000);    
          blogButton.click()      
-       browser.pause(2000);      
+       browser.pause(4000);      
        const guideButton = $('.nav-site.nav-site-internal [href="/docs/gettingstarted.html"]')    
          guideButton.click()    
          browser.pause(2000);  
