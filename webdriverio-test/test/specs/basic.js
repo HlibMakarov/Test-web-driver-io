@@ -32,7 +32,7 @@ it('should demonstrate  setValue command', function () { 
         const blogButton = $('[href="/blog/"]')   
          browser.pause(2000);    
          blogButton.click()      
-       browser.pause(3000);      
+       browser.pause(2000);      
        const guideButton = $('.nav-site.nav-site-internal [href="/docs/gettingstarted.html"]')    
          guideButton.click()    
          browser.pause(2000);  
