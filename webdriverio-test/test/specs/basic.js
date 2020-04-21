@@ -19,10 +19,25 @@ it('should demonstrate the addValue command', () =>{
     assert(value === 'test123') //true
     })
 
-it('should demonstrate the setValue command', function () {
-    browser.url('https://webdriver.io');
-    const elem = $('search_input_react');
-    elem.setValue('test123');
-    browser.pause(2000);
+
+it('should demonstrate  setValue command', function () {   
+    browser.url('https://webdriver.io');       
+     const elem = $('#search_input_react');        
+     elem.setValue('test123');       
+      browser.pause(2000);    })
+
+      
+    it('should demonstrate the click command', () => {    
+        browser.url('https://webdriver.io');    
+        const blogButton = $('[href="/blog/"]')   
+         browser.pause(2000);    
+         blogButton.click()      
+       browser.pause(2000);      
+       const guideButton = $('.nav-site.nav-site-internal [href="/docs/gettingstarted.html"]')    
+         guideButton.click()    
+         browser.pause(2000);  
+      })
 })
-})
+
+
+
