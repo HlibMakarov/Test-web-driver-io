@@ -1,19 +1,31 @@
 const assert = require('assert')
 
 describe('webdriver.io page', () => {
+    
+    xit('should have the right title', () => {
+        browser.url('https://webdriver.io')
+        const title = browser.getTitle()
+        assert.strictEqual(title, 'WebdriverIO · Next-gen browser automation test framework for Node.js')
+    })
 
-    it('should demonstrate the getLocation function', () => {       
-         browser.url('https://webdriver.io');      
-           const logo = $('#search_input_react')    
-             const location = logo.getLocation();    
-             console.log(location);          
-            const xLocation = logo.getLocation('x')    
-              console.log("xLocation" + xLocation);     });
+    xit('should demonstrate the click command', () => {    
+        browser.url('https://webdriver.io');    
+        const blogButton = $('[href="/docs/api.html"]')   
+         browser.pause(2000);    
+         blogButton.click()      
+       browser.pause(2000);      
+    })
+    
+    xit('should demonstrate the getText function', () => {     
+        browser.url('https://webdriver.io');      
+        console.log(browser.getUrl());  
+      });
 
-        it('should demonstrate the getText function', () => {     
-          browser.url('https://webdriver.io');      
-          const blogButton = $('[href="/blog/"]')    
-            console.log("Text for element:" + blogButton.getText());    });
+      
+
+
+
+
 })
 
 
