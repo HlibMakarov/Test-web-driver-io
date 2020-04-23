@@ -20,11 +20,11 @@
 //       });
 // //4.Распечатать заглавие странички( использовать локатор ".postHeaderTitle")
 
-//     xit('should have the right title', () => {
-//         browser.url('https://webdriver.io/docs/api.html')
-//         const title = $(".postHeaderTitle")
-//         console.log(title.getText())
-//     })
+    // it('should have the right title', () => {
+    //     browser.url('https://webdriver.io/docs/api.html')
+    //     const title = $(".postHeaderTitle")
+    //     console.log(title.getText())
+    // })
    
 // //5. Распечатать атрибут href элемента (использовать локатор "//*[text()="JSONWire protocol"]")
 // it('should demonstrate the getAttribute command', () => {
@@ -180,9 +180,35 @@ it('should get html for certain elements', () => {
     isDisplayed = SeleniumHQ.isDisplayed();      
     console.log("IS DISPLAYEDSelenium?: " +isDisplayed); //outputs: true    4. Проверить, что элемент 'strong a[href="/SeleniumHQ/selenium/wiki"]' видимый пользователю (isDisplayed). Результат вывести через consle.log()
 
-    browser.switchWindow('https://webdriver.io/docs/api.html') //5. Переключаемся назад на Табу 'https://webdriver.io/docs/api.html'
-    browser.pause(5000);
-                                        //6. Используя метод waitUntil ждем пока текст, который содержиться в элементе ".postHeaderTitle" (используем метод getText())равен "API Docs"
+//5. Переключаемся назад на Табу 'https://webdriver.io/docs/api.html'
+    browser.switchWindow('https://webdriver.io/docs/api.html')    
+     browser.pause(2000);
+   
+//6. Используя метод waitUntil ждем пока текст, который содержиться в элементе ".postHeaderTitle" (используем метод getText())равен "API Docs"
+    browser.waitUntil(
+    () => $(".postHeaderTitle").getText() === "API Docs",
+    {
+    timeout: 5000,
+    timeoutMsg: 'expected text to be different after 5s'
+    });
+//7. Делаем скриншот элемента ".postHeaderTitle"
+        const elem = $(".postHeaderTitle");
+        elem.saveScreenshot('saveScreenshot.png')
 
+
+//8. Печатаем результат выполнения команды isDisplayed() в консоль для локатора'href="https://twitter.com/webdriverio"'
+
+
+    const blogButton = $('[href="https://twitter.com/webdriverio"]') 
+    isDisplayed = blogButton.isDisplayed();
+    console.log("IS DISPLAYED twitter.com/ ?: " +isDisplayed); //outputs: true
+
+// 9. Печатаем результат выполнения команды isDisplayedInViewPort() в консоль для локатора 'href="https://twitter.com/webdriverio"'
+
+
+    let isBlogDisplayedInViewport = $('[href="https://twitter.com/webdriverio"]').isDisplayedInViewport();
+    console.log("istwitterDisplayedInViewport:" + isBlogDisplayedInViewport); //outputs: true
+    
+ 
 
 })
