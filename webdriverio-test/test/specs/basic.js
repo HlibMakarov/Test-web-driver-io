@@ -66,7 +66,7 @@
 //     browser.pause(5000);
 // })
 
-//      Урок Lesson #10 Trainee Level 1(API). Methods isDisplayed(), isDisplayedInViewPort(), isClickable().
+//++++++Урок Lesson #10 Trainee Level 1(API). Methods isDisplayed(), isDisplayedInViewPort(), isClickable().
 // //      https://youtu.be/oQCtsSHRhzM
 
 // it('should detect if an element is clickable ', () => {
@@ -92,7 +92,7 @@
 //     console.log("isGitHubDisplayedInViewport:" + isGitHubDisplaedInViewport); //outputs: false
 // })
 
-//      Lesson #11. webdriver.io Trainee Level 1(API). Methods is Enabled(), is Focused(), scrolIntoView()
+//++++++Lesson #11. webdriver.io Trainee Level 1(API). Methods is Enabled(), is Focused(), scrolIntoView()
 //      https://youtu.be/js8MIP_Y7r0
 
 // it('should detect if an element is enabled', () => {
@@ -120,7 +120,7 @@
 //     browser.pause(4000);
 // })
 
-//      Lesson #12. webdriver.io Trainee Level 1(API). Methods saveScreenshot(), newWindow(), switchWindow()
+//+++++++++Lesson #12. webdriver.io Trainee Level 1(API). Methods saveScreenshot(), newWindow(), switchWindow()
 //      https://youtu.be/m8gl_-jx6lM
 
 // it('should save a screenshot of the browser view', function() {
@@ -166,19 +166,19 @@
 
 //              Lesson #14. webdriver.io Trainee Level 1(API). Home task.
 //              https://youtu.be/oY4-xMfsvUQ
-
+//1. Перейти на страничку https://webdriver.io/docs/api.html
 it('should get html for certain elements', () => {
-    browser.url('https://webdriver.io/docs/api.html'); //1. Перейти на страничку https://webdriver.io/docs/api.html
+    browser.url('https://webdriver.io/docs/api.html'); 
     let HrefText = $('//*[text()="JSONWire protocol"]');
     let HrefAttr = HrefText.getAttribute('href');
-    
-    browser.newWindow(HrefAttr)  //2. Открыть ссылку //*[text()="JSONWire protocol"] в новой Табе(используем getAttribute() и newWindow()) браузера
-  
-    browser.switchWindow(HrefAttr)  //3. Переключиться на открытую табу
-
+//2. Открыть ссылку //*[text()="JSONWire protocol"] в новой Табе(используем getAttribute() и newWindow()) браузера    
+    browser.newWindow(HrefAttr)  
+//3. Переключиться на открытую табу 
+    browser.switchWindow(HrefAttr)  
+//4. Проверить, что элемент 'strong a[href="/SeleniumHQ/selenium/wiki"]' видимый пользователю (isDisplayed). Результат вывести через consle.log()
     const SeleniumHQ = $('strong a[href="/SeleniumHQ/selenium/wiki"]') 
     isDisplayed = SeleniumHQ.isDisplayed();      
-    console.log("IS DISPLAYEDSelenium?: " +isDisplayed); //outputs: true    4. Проверить, что элемент 'strong a[href="/SeleniumHQ/selenium/wiki"]' видимый пользователю (isDisplayed). Результат вывести через consle.log()
+    console.log("IS DISPLAYEDSelenium?: " +isDisplayed); //outputs: true    
 
 //5. Переключаемся назад на Табу 'https://webdriver.io/docs/api.html'
     browser.switchWindow('https://webdriver.io/docs/api.html')    
@@ -199,16 +199,44 @@ it('should get html for certain elements', () => {
 //8. Печатаем результат выполнения команды isDisplayed() в консоль для локатора'href="https://twitter.com/webdriverio"'
 
 
-    const blogButton = $('[href="https://twitter.com/webdriverio"]') 
-    isDisplayed = blogButton.isDisplayed();
-    console.log("IS DISPLAYED twitter.com/ ?: " +isDisplayed); //outputs: true
-
+    const linktwitter = $('[href="https://twitter.com/webdriverio"]') 
+    isDisplayed3 = linktwitter.isDisplayed();
+    console.log("IS DISPLAYED linktwitter ?: " + isDisplayed3); //outputs: False
+ 
 // 9. Печатаем результат выполнения команды isDisplayedInViewPort() в консоль для локатора 'href="https://twitter.com/webdriverio"'
 
 
     let isBlogDisplayedInViewport = $('[href="https://twitter.com/webdriverio"]').isDisplayedInViewport();
-    console.log("istwitterDisplayedInViewport:" + isBlogDisplayedInViewport); //outputs: true
+    console.log("istwitterDisplayedInViewport:" + isBlogDisplayedInViewport); //outputs: false
     
- 
+ // 10. Скролим к элементу 'href="https://twitter.com/webdriverio"'
+    const twitterLink = $('#footer [href="https://twitter.com/webdriverio"]');
+    twitterLink.scrollIntoView();
+
+// 11. Печатаем результат выполнения команды isDisplayed() в консоль для локатора 'href="https://twitter.com/webdriverio"'
+  
+    const twittercom = $('[href="https://twitter.com/webdriverio"]') 
+    isDisplayed = twittercom.isDisplayed();
+    console.log("IS DISPLAYED twitter.com@222/ ?: " +isDisplayed); //outputs: true
+
+//12. Печатаем результат выполнения команды isDisplayedInViewPort() в консоль для локатора 'href="https://twitter.com/webdriverio"'
+
+    let istwitterafterscrollDisplayedInViewport = $('[href="https://twitter.com/webdriverio"]').isDisplayedInViewport();
+    console.log("istwitterafterscrollDisplayedInViewport:" + istwitterafterscrollDisplayedInViewport); //outputs: true
+    
+//13. Печатаем результат выполнения команды isFocused для локатора href="/blog/"
+
+    const input = $('[href="/blog/"]')
+    console.log("blog.isFocused() before click:" + input.isFocused()); // output: false
+   
+
+//14. Кликаем по локатору href="/blog/"
+
+    input.click();
+    
+   
+//15. Выводим результат выполнения команды isFocused для локатора href="/blog/"
+
+    console.log("search.isFocused() afte click:" + input.isFocused()); // output: true
 
 })
