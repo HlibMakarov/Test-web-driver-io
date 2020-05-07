@@ -22936,3 +22936,23 @@ xdescribe("Test PrestaShop", function() {
     })
 
 })
+
+it('Sign in into web', () => {
+
+    browser.url('https://demo.prestashop.com/#/en/front')
+    
+    browser.pause(2000);
+    
+     
+    
+    
+
+    browser.waitUntil(() => {
+                 return $('//*[text()= "Sign in"]').isDisplayed();
+             }, 5000, );
+
+    $('//*[text()= "Sign in"]').click() 
+    
+    browser.pause(5000);
+    
+    })
