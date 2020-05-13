@@ -392,7 +392,7 @@
 
  //Start auto-test shop ShareLine
 
-const assert = require("assert");
+//const assert = require("assert");
  
 xdescribe("Shareline test login page", function() {
     it("Shareline test Rus_name+ENG_lastname", function() {
@@ -22937,7 +22937,7 @@ xdescribe("Test PrestaShop", function() {
 
 })
 
-it('Sign in into web', () => {
+xit('Sign in into web', () => {
 
     browser.url('https://demo.prestashop.com/#/en/front')
     
@@ -22954,5 +22954,40 @@ it('Sign in into web', () => {
     $('//*[text()= "Sign in"]').click() 
     
     browser.pause(5000);
+    
+    })
+
+
+
+describe("Shareline  discount %2 20-49", function() {
+        it("Log in and Add to cart", function() {
+            browser.url("http://www.sharelane.com/cgi-bin/main.py");
+            $('[href="../test_portal.html"]').click();
+            $('[href="../cgi-bin/create_account.py"]').click();
+            $('[value="Create new user account"]').click();
+            $('[value="Auto Login"]').click();
+            $('/html/body/center/table/tbody/tr[5]/td/table/tbody/tr/td[1]/table/tbody/tr[3]/td/a').click();
+            $('[src="../images/add_to_cart.gif"]').click();
+            $('[href="./shopping_cart.py"]').click();
+            
+            $('[value="Update"]').click();
+        });
+    
+        it("test 1", function() {
+
+            let arr = ['20',	'21',	'22',	'23',	'24',	'25',	'26',	'27',	'28',	'29',	'30',	'31',	'32',	'33',	'34',	'35',	'36',	'37',	'38',	'39',	'40',	'41',	'42',	'43',	'44',	'45',	'46',	'47',	'48',	'49']
+
+            for (let i = 0; i < arr.length; i++) {
+            const InputNext = $ ('[type="text"][name="q"]')
+            // InputNext.doubleClick()
+             InputNext.clearValue();
+            InputNext.addValue(arr[i])
+            $('[value="Update"]').click();
+            assert.strictEqual(($ ('/html/body/center/table/tbody/tr[6]/td/table/tbody/tr[2]/td[5]/p/b')).getText(),'2');
+            }
+        })
+    
+            
+    
     
     })
